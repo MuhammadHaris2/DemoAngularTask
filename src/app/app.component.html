@@ -1,0 +1,12 @@
+<nav *ngIf="userName" class="headerPosition navbar navbar-expand navbar-dark bg-dark justify-content-between" >
+  <div class="navbar-nav">
+      <h4 class="text-white m-0 font-weight-bold display-3">Welcome {{userName}} ({{today | date}})</h4>
+  </div>
+  <div class="navbar-nav">
+      <a class="nav-item text-white cursor-pointer" (click)="Logout()">Logout</a>
+  </div>
+</nav>
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

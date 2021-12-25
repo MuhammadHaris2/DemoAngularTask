@@ -1,0 +1,58 @@
+<div class="w-100">
+    <div class="input-group justify-content-start searchMargin">
+        <div class="form-outline">
+          <input mat-input type="search" #inputSearch placeholder="Type letter for Search" class="form-control" />
+         
+        </div>
+      </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Operation </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of familyList; let i = index">
+                <td>{{i+1}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.relation}}</td>
+                <td>
+                  <span class="d-flex align-items-center">
+                      
+                    <mat-icon class="mr-3 cursor-pointer" (click)="openModel(modelDialog,item,i,'View Family Info',1)">visibility</mat-icon>
+                    <mat-icon *ngIf="isAdmin" class="mr-3 cursor-pointer" (click)="openModel(modelDialog,item,i,'Edit Family Info',2)">edit</mat-icon>
+                    <mat-icon *ngIf="isAdmin" class="mr-3 cursor-pointer text-danger" (click)="deleteData(i)">delete</mat-icon>
+                  </span>
+                </td>
+
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+
+<ng-template #modelDialog>
+    <div class="row">
+        <h2 class="paddingHeading col-12">{{title}}</h2>
+        <ng-container *ngIf="tab==1">
+            <div class="col-3">Name</div>
+            <div class="col-9">{{viewRowData.name}}</div>
+            <div class="col-3">Relation</div>
+            <div class="col-9">{{viewRowData.relation}}</div>
+        </ng-container>
+        
+        <div class="col-12" *ngIf="tab==2">
+          <mat-form-field class="w-100" appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput placeholder="Name" [(ngModel)]="editRowName" />
+          </mat-form-field> 
+        </div>
+        <div class="col-12 text-right">
+            <button mat-flat-button color="primary" (click)="closeDialog()">{{(tab==1)?'OK':'Close'}}</button>
+            <button *ngIf="tab==2" mat-flat-button color="primary" (click)="edit()" class="ml-2">Edit</button>
+        </div>
+    </div>
+</ng-template>
