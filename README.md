@@ -1,6 +1,9 @@
 # LfdTask
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.13.
+## Login
+Username: AdminPassword: 123 Username: SuperPassword: 123
+
 ## <a href= "https://muhammadharis2.github.io/DemoAngularTask/login">Live Demo</a>
 ## Development server
 
